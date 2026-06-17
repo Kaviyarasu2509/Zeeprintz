@@ -1,0 +1,93 @@
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.contact-info h2,
+.contact-form-box h2 { margin-bottom: 8px; }
+.contact-form-box > p { color: var(--ink-muted); margin-bottom: 28px; font-size: 0.9rem; }
+
+.contact-card {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--paper-off);
+}
+.contact-card__icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+.contact-card > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.contact-card strong { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); }
+.contact-card a, .contact-card span, .contact-card address {
+  font-size: 0.95rem;
+  color: var(--ink);
+  font-style: normal;
+  line-height: 1.5;
+}
+.contact-card a:hover { color: var(--accent); }
+.map-link { color: var(--accent) !important; font-weight: 600; font-size: 0.85rem !important; }
+.wa-link { color: #25D366 !important; font-weight: 600; }
+
+.contact-map { margin-top: 24px; }
+
+/* Form */
+.contact-form-box {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(0,0,0,0.07);
+}
+
+.cf-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+.cf-field label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+.cf-field input,
+.cf-field select,
+.cf-field textarea {
+  padding: 12px 14px;
+  border: 1.5px solid rgba(0,0,0,0.12);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--ink);
+  background: var(--paper);
+  outline: none;
+  transition: border-color 0.15s;
+  resize: vertical;
+}
+.cf-field input:focus,
+.cf-field select:focus,
+.cf-field textarea:focus {
+  border-color: var(--accent);
+}
+
+.cf-submit {
+  width: 100%;
+  justify-content: center;
+  font-size: 1rem;
+  padding: 16px;
+}
+.cf-note {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+  margin-top: 10px;
+}
+
+@media (max-width: 860px) {
+  .contact-grid { grid-template-columns: 1fr; }
+}
