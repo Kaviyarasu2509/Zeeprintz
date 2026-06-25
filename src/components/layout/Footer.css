@@ -23,8 +23,14 @@
 .footer__desc {
   font-size: 0.875rem;
   line-height: 1.7;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   color: rgba(255,255,255,0.6);
+}
+.footer__local {
+  color: rgba(255,255,255,0.48);
+  font-size: 0.82rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
 }
 
 .footer__socials {
@@ -83,7 +89,20 @@
   color: rgba(255,255,255,0.6);
   line-height: 1.5;
 }
-.footer__contact-list li span:first-child { flex-shrink: 0; font-size: 1rem; }
+.footer__contact-list li span:first-child {
+  align-items: center;
+  background: rgba(255,255,255,0.08);
+  border-radius: 5px;
+  color: var(--accent-light);
+  display: inline-flex;
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-size: 0.58rem;
+  font-weight: 800;
+  height: 26px;
+  justify-content: center;
+  width: 30px;
+}
 .footer__contact-list a { color: rgba(255,255,255,0.6); transition: color 0.15s; }
 .footer__contact-list a:hover { color: var(--accent-light); }
 address { font-style: normal; }

@@ -1,22 +1,43 @@
 import SEOHead from "../components/ui/SEOHead";
-import { BUSINESS, SERVICES } from "../data/businessData";
+import { BUSINESS, SERVICES, SITE_URL } from "../data/businessData";
 import "./PricingPage.css";
+
+const pricingSchema = {
+  "@context": "https://schema.org",
+  "@type": "OfferCatalog",
+  name: "ZeePrintz Printing Prices in Coimbatore",
+  itemListElement: SERVICES.map((service) => ({
+    "@type": "Offer",
+    name: service.title,
+    description: service.desc,
+    priceSpecification: {
+      "@type": "PriceSpecification",
+      priceCurrency: "INR",
+      description: service.price,
+    },
+    availability: "https://schema.org/InStock",
+  })),
+};
 
 export default function PricingPage() {
   return (
     <>
       <SEOHead
-        title="Printing Prices Coimbatore – Best Rates at ZeePrintz"
-        description="Transparent printing prices at ZeePrintz Coimbatore. Visiting cards from ₹199, flex from ₹18/sqft, wedding cards from ₹8. Best and cheapest printing in Coimbatore."
-        keywords="printing price coimbatore, cheap printing coimbatore, visiting card price coimbatore, flex banner price coimbatore, affordable printing coimbatore"
-        canonical="https://zeeprintz.com/pricing"
+        title="Printing Prices in Coimbatore - Visiting Card & Flex Rates"
+        description="Check starting prices at ZeePrintz Coimbatore: visiting cards from Rs.199, flex banners from Rs.18 per sqft, wedding cards from Rs.8 and custom print quotes on WhatsApp."
+        keywords="printing price coimbatore, visiting card price coimbatore, flex banner price coimbatore, cheap printing coimbatore, affordable printing coimbatore"
+        canonical={`${SITE_URL}/pricing`}
+        schema={[pricingSchema]}
       />
 
       <div className="page-hero">
         <div className="container">
           <p className="eyebrow">Transparent Pricing</p>
-          <h1>Best Print Prices in Coimbatore</h1>
-          <p>No hidden charges. No surprises. What you see is what you pay.</p>
+          <h1>Printing Prices in Coimbatore</h1>
+          <p>
+            Starting rates for popular print jobs. Final price depends on
+            quantity, size, paper, finish, and delivery deadline.
+          </p>
         </div>
       </div>
 
@@ -24,40 +45,41 @@ export default function PricingPage() {
         <div className="container">
           <div className="pricing-grid">
             {SERVICES.map((s) => (
-              <div key={s.id} className="pricing-card">
+              <article key={s.id} className="pricing-card">
                 <div className="pricing-card__header">
-                  <span className="pricing-card__icon">{s.icon}</span>
+                  <span className="pricing-card__icon" aria-hidden="true">{s.icon}</span>
                   <div>
-                    <h3>{s.title}</h3>
+                    <h2>{s.title}</h2>
                     <span className="pricing-card__from">{s.price}</span>
                   </div>
                 </div>
                 <p>{s.desc}</p>
                 <a
-                  href={`https://wa.me/${BUSINESS.contact.whatsapp}?text=Hi! I need a quote for ${s.title}.`}
+                  href={`https://wa.me/${BUSINESS.contact.whatsapp}?text=Hi ZeePrintz! I need a quote for ${encodeURIComponent(s.title)}.`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="pricing-card__cta"
                 >
-                  Get Exact Quote →
+                  Get Exact Quote
                 </a>
-              </div>
+              </article>
             ))}
           </div>
 
           <div className="pricing-note">
-            <h3>💡 Bulk Discount Available!</h3>
+            <h2>Bulk Discount Available</h2>
             <p>
-              Order 1000+ visiting cards? 100+ brochures? Wedding with 500+ cards?
-              Contact us for special bulk pricing — we offer the best bulk rates in Coimbatore.
+              Ordering 1000+ visiting cards, 100+ brochures, large flex banners,
+              corporate kits, or wedding cards in bulk? Contact ZeePrintz for
+              special bulk pricing in Coimbatore.
             </p>
             <a
-              href={`https://wa.me/${BUSINESS.contact.whatsapp}?text=Hi ZeePrintz! I have a bulk order. Please share pricing.`}
+              href={`https://wa.me/${BUSINESS.contact.whatsapp}?text=Hi ZeePrintz! I have a bulk printing order. Please share pricing.`}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-primary"
             >
-              📲 Ask for Bulk Price
+              Ask for Bulk Price
             </a>
           </div>
         </div>

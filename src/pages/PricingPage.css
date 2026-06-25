@@ -18,8 +18,21 @@
 .pricing-card:hover { box-shadow: var(--shadow-md); border-color: rgba(230,51,18,0.18); }
 
 .pricing-card__header { display: flex; align-items: center; gap: 14px; }
-.pricing-card__icon { font-size: 2rem; flex-shrink: 0; }
-.pricing-card__header h3 { font-size: 1rem; margin-bottom: 3px; }
+.pricing-card__icon {
+  align-items: center;
+  background: var(--paper-off);
+  border-radius: var(--radius-sm);
+  color: var(--accent);
+  display: inline-flex;
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-size: 0.76rem;
+  font-weight: 800;
+  height: 40px;
+  justify-content: center;
+  width: 40px;
+}
+.pricing-card__header h2 { font-size: 1rem; margin-bottom: 3px; }
 .pricing-card__from { font-size: 0.9rem; font-weight: 700; color: var(--accent); }
 .pricing-card p { font-size: 0.85rem; color: var(--ink-muted); line-height: 1.6; flex: 1; }
 .pricing-card__cta {
@@ -37,5 +50,5 @@
   padding: 40px;
   text-align: center;
 }
-.pricing-note h3 { font-size: 1.4rem; margin-bottom: 10px; }
+.pricing-note h2 { font-size: 1.4rem; margin-bottom: 10px; }
 .pricing-note p { color: var(--ink-soft); max-width: 500px; margin: 0 auto 24px; line-height: 1.7; }

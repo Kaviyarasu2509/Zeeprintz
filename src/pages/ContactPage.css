@@ -16,7 +16,21 @@
   padding: 16px 0;
   border-bottom: 1px solid var(--paper-off);
 }
-.contact-card__icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+.contact-card__icon {
+  align-items: center;
+  background: var(--paper-off);
+  border-radius: var(--radius-sm);
+  color: var(--accent);
+  display: inline-flex;
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 800;
+  height: 34px;
+  justify-content: center;
+  margin-top: 2px;
+  width: 34px;
+}
 .contact-card > div {
   display: flex;
   flex-direction: column;

@@ -21,7 +21,21 @@
   gap: 12px;
   align-items: flex-start;
 }
-.about-value > span { font-size: 1.5rem; flex-shrink: 0; }
+.about-value > span,
+.acb-item > span {
+  align-items: center;
+  background: var(--paper-off);
+  border-radius: var(--radius-sm);
+  color: var(--accent);
+  display: inline-flex;
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 800;
+  height: 32px;
+  justify-content: center;
+  width: 32px;
+}
 .about-value strong { font-size: 0.95rem; display: block; margin-bottom: 4px; }
 .about-value p { font-size: 0.82rem; color: var(--ink-muted); margin: 0; }
 
@@ -42,7 +56,6 @@
   align-items: flex-start;
   font-size: 0.875rem;
 }
-.acb-item > span { flex-shrink: 0; font-size: 1rem; }
 .acb-item a, .acb-item address, .acb-item div {
   color: var(--ink-soft);
   font-style: normal;

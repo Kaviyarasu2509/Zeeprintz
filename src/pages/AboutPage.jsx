@@ -1,15 +1,15 @@
 import SEOHead from "../components/ui/SEOHead";
-import { BUSINESS } from "../data/businessData";
+import { BUSINESS, SITE_URL } from "../data/businessData";
 import "./AboutPage.css";
 
 export default function AboutPage() {
   return (
     <>
       <SEOHead
-        title="About ZeePrintz – Coimbatore's Trusted Printing Shop"
-        description="ZeePrintz is Coimbatore's trusted printing shop in Gandhipuram since 2014. Learn about our story, values, and commitment to quality printing."
-        keywords="about zeeprintz, coimbatore printing shop history, gandhipuram printer, trusted printing coimbatore"
-        canonical="https://zeeprintz.com/about"
+        title="About ZeePrintz - Trusted Printing Shop in Coimbatore"
+        description="ZeePrintz is a trusted printing shop in Gandhipuram, Coimbatore, serving local businesses, events, colleges and families with quality printing since 2014."
+        keywords="about zeeprintz, coimbatore printing shop, gandhipuram printer, trusted printing shop coimbatore"
+        canonical={`${SITE_URL}/about`}
       />
 
       <div className="page-hero">
@@ -26,29 +26,31 @@ export default function AboutPage() {
             <p className="eyebrow">Who We Are</p>
             <h2>Coimbatore's Trusted Print Studio Since 2014</h2>
             <p>
-              ZeePrintz was born from a simple belief: every business deserves high-quality prints
-              at an affordable price. Located in the commercial heart of Coimbatore — Gandhipuram —
-              we've been serving thousands of customers with precision and passion.
+              ZeePrintz was built on a simple idea: every business deserves
+              sharp, reliable prints at a fair price. From our Gandhipuram print
+              studio, we serve customers across Coimbatore with business,
+              wedding, event, retail, and promotional printing.
             </p>
             <p>
-              From a tiny shop to a full-service print studio, ZeePrintz has grown alongside
-              Coimbatore's thriving business community. Today, we serve startups, established
-              businesses, event planners, schools, and individuals across the city.
+              Our team works with startups, established companies, shops,
+              schools, colleges, agencies, and families who need quick
+              communication, practical guidance, and clean print finishing.
             </p>
             <p>
-              Our team of print experts uses the latest digital and offset printing technology to
-              deliver vibrant, durable, and precise prints — every single time.
+              We focus on file checking, color clarity, material selection,
+              cutting, finishing, and delivery timelines so every order feels
+              simple from quote to pickup.
             </p>
 
             <div className="about-values">
               {[
-                ["🎯", "Precision", "Every print is checked for quality before delivery"],
-                ["⚡", "Speed", "Fast turnaround — same day for urgent orders"],
-                ["🤝", "Trust", "5000+ happy customers in Coimbatore"],
-                ["💰", "Value", "Best price guarantee — no compromises on quality"],
-              ].map(([icon, title, desc]) => (
+                ["Precision", "Every print is checked before delivery"],
+                ["Speed", "Fast turnaround for urgent orders"],
+                ["Trust", "5000+ happy customers in Coimbatore"],
+                ["Value", "Fair pricing without cutting quality"],
+              ].map(([title, desc]) => (
                 <div key={title} className="about-value">
-                  <span>{icon}</span>
+                  <span>ZP</span>
                   <div>
                     <strong>{title}</strong>
                     <p>{desc}</p>
@@ -62,21 +64,21 @@ export default function AboutPage() {
             <div className="about-contact-box">
               <h3>Visit Us Today</h3>
               <div className="acb-item">
-                <span>📍</span>
+                <span>LOC</span>
                 <address>{BUSINESS.address.full}</address>
               </div>
               <div className="acb-item">
-                <span>📞</span>
+                <span>PH</span>
                 <a href={`tel:${BUSINESS.contact.phone}`}>{BUSINESS.contact.phoneDisplay}</a>
               </div>
               <div className="acb-item">
-                <span>✉️</span>
+                <span>EM</span>
                 <a href={`mailto:${BUSINESS.contact.email}`}>{BUSINESS.contact.email}</a>
               </div>
               <div className="acb-item">
-                <span>🕐</span>
+                <span>HR</span>
                 <div>
-                  <span>Mon–Fri: {BUSINESS.hours.weekdays}</span>
+                  <span>Mon - Fri: {BUSINESS.hours.weekdays}</span>
                   <span>Sat: {BUSINESS.hours.saturday}</span>
                 </div>
               </div>
@@ -87,7 +89,7 @@ export default function AboutPage() {
                 className="btn btn-whatsapp"
                 style={{ width: "100%", justifyContent: "center", marginTop: "8px" }}
               >
-                📲 Chat on WhatsApp
+                Chat on WhatsApp
               </a>
             </div>
           </div>
