@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import SEOHead from "../components/ui/SEOHead";
 import {
@@ -25,7 +26,36 @@ const homeFaqSchema = {
   })),
 };
 
+const animationStyle = (index, step = 90) => ({
+  "--aos-delay": `${index * step}ms`,
+});
+
 export default function HomePage() {
+  useEffect(() => {
+    const animatedItems = document.querySelectorAll("[data-aos]");
+
+    if (!("IntersectionObserver" in window)) {
+      animatedItems.forEach((item) => item.classList.add("aos-animate"));
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("aos-animate");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -12% 0px", threshold: 0.12 }
+    );
+
+    animatedItems.forEach((item) => observer.observe(item));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
       <SEOHead
@@ -42,18 +72,22 @@ export default function HomePage() {
           <div className="hero__ink-drop hero__ink-drop--2" />
           <div className="hero__ink-drop hero__ink-drop--3" />
         </div>
-        <div className="container-fluid hero__content">
+        <div className="container hero__content">
           <div className="hero__text">
-            <p className="eyebrow">Gandhipuram, Coimbatore</p>
+            <p className="eyebrow hero__eyebrow">Gandhipuram, Coimbatore</p>
             <h1 className="hero__heading">
-              Printing Shop in Coimbatore for Fast, Premium Prints
+              <span className="hero__heading-line">Printing Shop</span>
+              <span className="hero__heading-line">in Coimbatore</span>
+              <span className="hero__heading-line hero__heading-accent">
+                for Fast, Premium Prints
+              </span>
             </h1>
-            <p className="hero__sub">
+            <p className="hero__sub hero__intro">
               ZeePrintz prints visiting cards, flex banners, wedding cards,
               brochures, stickers, ID cards, calendars, and custom t-shirts with
               reliable quality and quick local delivery.
             </p>
-            <div className="hero__actions">
+            <div className="hero__actions hero__action-anim">
               <a
                 href={`https://wa.me/${BUSINESS.contact.whatsapp}?text=Hi ZeePrintz! I want to place a printing order.`}
                 target="_blank"
@@ -66,7 +100,7 @@ export default function HomePage() {
                 View Services
               </Link>
             </div>
-            <div className="hero__trust">
+            <div className="hero__trust hero__trust-anim">
               <span>Rated 5 stars by local customers</span>
               <span className="hero__trust-sep">|</span>
               <span>10+ years in Coimbatore</span>
@@ -112,8 +146,13 @@ export default function HomePage() {
 
       <section className="stats-bar" aria-label="ZeePrintz highlights">
         <div className="container stats-bar__grid">
-          {STATS.map((s) => (
-            <div key={s.label} className="stat-item">
+          {STATS.map((s, index) => (
+            <div
+              key={s.label}
+              className="stat-item"
+              data-aos="zoom-in"
+              style={animationStyle(index, 70)}
+            >
               <span className="stat-value">{s.value}</span>
               <span className="stat-label">{s.label}</span>
             </div>
@@ -123,16 +162,22 @@ export default function HomePage() {
 
       <section className="section services-preview">
         <div className="container">
-          <p className="eyebrow">Popular Printing Services</p>
-          <h2>Print Services in Coimbatore</h2>
-          <p className="section-sub">
+          <p className="eyebrow" data-aos="fade-up">Popular Printing Services</p>
+          <h2 data-aos="fade-up" style={animationStyle(1)}>Print Services in Coimbatore</h2>
+          <p className="section-sub" data-aos="fade-up" style={animationStyle(2)}>
             Get business printing, event printing, wedding printing, retail
             branding, and promotional materials from one local print studio in
             Gandhipuram.
           </p>
           <div className="services-grid">
-            {SERVICES.filter((s) => s.popular).map((s) => (
-              <Link to="/services" key={s.id} className="service-card">
+            {SERVICES.filter((s) => s.popular).map((s, index) => (
+              <Link
+                to="/services"
+                key={s.id}
+                className="service-card"
+                data-aos="fade-up"
+                style={animationStyle(index)}
+              >
                 {s.popular && <span className="tag tag-accent service-card__badge">Popular</span>}
                 <div className="service-card__icon">{s.icon}</div>
                 <h3>{s.title}</h3>
@@ -141,7 +186,7 @@ export default function HomePage() {
               </Link>
             ))}
           </div>
-          <div className="services-preview__cta">
+          <div className="services-preview__cta" data-aos="fade-up">
             <Link to="/services" className="btn btn-outline">
               See All Services
             </Link>
@@ -152,9 +197,11 @@ export default function HomePage() {
       <section className="section why-us">
         <div className="container why-us__inner">
           <div className="why-us__text">
-            <p className="eyebrow">Why ZeePrintz?</p>
-            <h2>Coimbatore's Trusted Print Studio</h2>
-            <p>
+            <p className="eyebrow" data-aos="fade-right">Why ZeePrintz?</p>
+            <h2 data-aos="fade-right" style={animationStyle(1)}>
+              Coimbatore's Trusted Print Studio
+            </h2>
+            <p data-aos="fade-right" style={animationStyle(2)}>
               Located on Cross Cut Road in Gandhipuram, ZeePrintz helps
               Coimbatore businesses, colleges, shops, event planners, and
               families print clearly, quickly, and affordably.
@@ -167,8 +214,13 @@ export default function HomePage() {
                 ["WhatsApp Orders", "Send files and requirements instantly"],
                 ["Bulk Discounts", "Better pricing for large quantities"],
                 ["Local Support", "Easy pickup from Gandhipuram"],
-              ].map(([title, sub]) => (
-                <li key={title} className="why-item">
+              ].map(([title, sub], index) => (
+                <li
+                  key={title}
+                  className="why-item"
+                  data-aos="fade-right"
+                  style={animationStyle(index, 65)}
+                >
                   <span className="why-item__icon">ZP</span>
                   <div>
                     <strong>{title}</strong>
@@ -178,7 +230,7 @@ export default function HomePage() {
               ))}
             </ul>
           </div>
-          <div className="why-us__cta-box">
+          <div className="why-us__cta-box" data-aos="zoom-in">
             <h3>Need a Print Quote?</h3>
             <p>Send your design, quantity, size, and deadline on WhatsApp.</p>
             <a
@@ -198,11 +250,16 @@ export default function HomePage() {
 
       <section className="section process-section">
         <div className="container">
-          <p className="eyebrow">Simple Ordering</p>
-          <h2>How Printing Orders Work</h2>
+          <p className="eyebrow" data-aos="fade-up">Simple Ordering</p>
+          <h2 data-aos="fade-up" style={animationStyle(1)}>How Printing Orders Work</h2>
           <div className="process-grid">
             {PROCESS_STEPS.map((step, index) => (
-              <div className="process-card" key={step.title}>
+              <div
+                className="process-card"
+                key={step.title}
+                data-aos="flip-up"
+                style={animationStyle(index)}
+              >
                 <span>{String(index + 1).padStart(2, "0")}</span>
                 <h3>{step.title}</h3>
                 <p>{step.text}</p>
@@ -215,17 +272,21 @@ export default function HomePage() {
       <section className="section local-seo">
         <div className="container local-seo__inner">
           <div>
-            <p className="eyebrow">Local Printing Near You</p>
-            <h2>Printing Shop Near Gandhipuram, Cross Cut Road</h2>
-            <p>
+            <p className="eyebrow" data-aos="fade-right">Local Printing Near You</p>
+            <h2 data-aos="fade-right" style={animationStyle(1)}>
+              Printing Shop Near Gandhipuram, Cross Cut Road
+            </h2>
+            <p data-aos="fade-right" style={animationStyle(2)}>
               ZeePrintz serves customers across central Coimbatore, including
               shops, offices, colleges, agencies, and event teams who need
               dependable printing with quick communication.
             </p>
           </div>
           <div className="area-list" aria-label="Service areas in Coimbatore">
-            {SERVICE_AREAS.map((area) => (
-              <span key={area}>{area}</span>
+            {SERVICE_AREAS.map((area, index) => (
+              <span key={area} data-aos="zoom-in" style={animationStyle(index, 45)}>
+                {area}
+              </span>
             ))}
           </div>
         </div>
@@ -233,11 +294,16 @@ export default function HomePage() {
 
       <section className="section testimonials">
         <div className="container">
-          <p className="eyebrow">Customer Reviews</p>
-          <h2>What Coimbatore Customers Say</h2>
+          <p className="eyebrow" data-aos="fade-up">Customer Reviews</p>
+          <h2 data-aos="fade-up" style={animationStyle(1)}>What Coimbatore Customers Say</h2>
           <div className="testimonials-grid">
-            {TESTIMONIALS.map((t) => (
-              <div key={t.name} className="testimonial-card">
+            {TESTIMONIALS.map((t, index) => (
+              <div
+                key={t.name}
+                className="testimonial-card"
+                data-aos="fade-up"
+                style={animationStyle(index)}
+              >
                 <div className="testimonial-card__stars" aria-label={`${t.rating} star rating`}>
                   {"★".repeat(t.rating)}
                 </div>
@@ -257,11 +323,16 @@ export default function HomePage() {
 
       <section className="section faq-section">
         <div className="container">
-          <p className="eyebrow">Printing FAQ</p>
-          <h2>Common Questions</h2>
+          <p className="eyebrow" data-aos="fade-up">Printing FAQ</p>
+          <h2 data-aos="fade-up" style={animationStyle(1)}>Common Questions</h2>
           <div className="faq-list">
-            {FAQS.map((faq) => (
-              <article className="faq-item" key={faq.question}>
+            {FAQS.map((faq, index) => (
+              <article
+                className="faq-item"
+                key={faq.question}
+                data-aos="fade-up"
+                style={animationStyle(index)}
+              >
                 <h3>{faq.question}</h3>
                 <p>{faq.answer}</p>
               </article>
@@ -273,10 +344,12 @@ export default function HomePage() {
       <section className="section location-cta">
         <div className="container location-cta__inner">
           <div>
-            <p className="eyebrow">Visit ZeePrintz</p>
-            <h2>Printing Shop in Gandhipuram, Coimbatore</h2>
-            <p>{BUSINESS.address.full}</p>
-            <div className="location-cta__actions">
+            <p className="eyebrow" data-aos="fade-right">Visit ZeePrintz</p>
+            <h2 data-aos="fade-right" style={animationStyle(1)}>
+              Printing Shop in Gandhipuram, Coimbatore
+            </h2>
+            <p data-aos="fade-right" style={animationStyle(2)}>{BUSINESS.address.full}</p>
+            <div className="location-cta__actions" data-aos="fade-right" style={animationStyle(3)}>
               <a
                 href={BUSINESS.googleMapsLink}
                 target="_blank"
@@ -290,7 +363,7 @@ export default function HomePage() {
               </a>
             </div>
           </div>
-          <div className="location-cta__map">
+          <div className="location-cta__map" data-aos="zoom-in">
             <iframe
               title="ZeePrintz Location"
               src={BUSINESS.mapEmbed}
