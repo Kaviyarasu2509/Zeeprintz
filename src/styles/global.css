@@ -56,6 +56,43 @@ ul { list-style: none; }
 
 .section { padding: var(--section-pad) 0; }
 
+.page-hero {
+  background:
+    linear-gradient(135deg, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.4)),
+    url("https://images.pexels.com/photos/6620973/pexels-photo-6620973.jpeg?auto=compress&cs=tinysrgb&w=1600") center / cover no-repeat;
+  color: var(--white);
+  overflow: hidden;
+  padding: calc(var(--nav-h) + 70px) 0 72px;
+  position: relative;
+  text-align: center;
+}
+
+.page-hero::after {
+  background: linear-gradient(90deg, #00bff3, #ff2fa2, #ffd84d, #111);
+  bottom: 0;
+  content: "";
+  height: 6px;
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+
+.page-hero h1 {
+  color: var(--white);
+  margin-bottom: 16px;
+}
+
+.page-hero p {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 1.05rem;
+  margin: 0 auto;
+  max-width: 620px;
+}
+
+.page-hero .eyebrow {
+  color: var(--yellow);
+}
+
 .btn {
   display: inline-flex;
   align-items: center;

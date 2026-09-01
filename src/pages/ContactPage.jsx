@@ -1,6 +1,7 @@
 import { useState } from "react";
 import SEOHead from "../components/ui/SEOHead";
 import { BUSINESS, SITE_URL } from "../data/businessData";
+import { PRINT_IMAGES } from "../data/imageLibrary";
 import "./ContactPage.css";
 
 export default function ContactPage() {
@@ -159,6 +160,27 @@ export default function ContactPage() {
             </button>
             <p className="cf-note">This opens WhatsApp with your details pre-filled.</p>
           </div>
+        </div>
+      </section>
+
+      <section className="contact-visual-section">
+        <div className="container contact-visual">
+          <div>
+            <p className="eyebrow">Before You Message</p>
+            <h2>For fastest quote, send these details.</h2>
+            <div className="quote-checklist">
+              {[
+                "Print item name",
+                "Size and quantity",
+                "Paper/material preference",
+                "Design file or sample photo",
+                "Deadline or pickup date",
+              ].map((item) => (
+                <span key={item}>{item}</span>
+              ))}
+            </div>
+          </div>
+          <img src={PRINT_IMAGES.businessCards} alt="Print quote sample cards" loading="lazy" />
         </div>
       </section>
     </>

@@ -1,3 +1,48 @@
+.pricing-packages {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 46px;
+}
+
+.pricing-packages article {
+  background: #0a0a0a;
+  border-radius: 16px;
+  color: white;
+  overflow: hidden;
+}
+
+.pricing-packages img {
+  aspect-ratio: 16 / 11;
+  object-fit: cover;
+  width: 100%;
+}
+
+.pricing-packages div {
+  padding: 26px;
+}
+
+.pricing-packages span {
+  color: #ffd84d;
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.pricing-packages h2 {
+  color: white;
+  font-size: 1.65rem;
+  margin-bottom: 8px;
+}
+
+.pricing-packages p {
+  color: rgba(255,255,255,0.72);
+  line-height: 1.7;
+}
+
 .pricing-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -13,9 +58,14 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  animation: priceRise 0.65s ease both;
   transition: all 0.2s;
 }
-.pricing-card:hover { box-shadow: var(--shadow-md); border-color: rgba(230,51,18,0.18); }
+.pricing-card:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(230,51,18,0.18);
+  transform: translateY(-5px);
+}
 
 .pricing-card__header { display: flex; align-items: center; gap: 14px; }
 .pricing-card__icon {
@@ -52,3 +102,50 @@
 }
 .pricing-note h2 { font-size: 1.4rem; margin-bottom: 10px; }
 .pricing-note p { color: var(--ink-soft); max-width: 500px; margin: 0 auto 24px; line-height: 1.7; }
+
+.pricing-visual-cta {
+  background: #0a0a0a;
+  color: white;
+  padding: clamp(70px, 9vw, 120px) 0;
+}
+
+.pricing-visual {
+  align-items: center;
+  display: grid;
+  gap: 54px;
+  grid-template-columns: 1.1fr 0.9fr;
+}
+
+.pricing-visual img {
+  border-radius: 16px;
+  min-height: 520px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.pricing-visual h2 {
+  color: white;
+  font-size: clamp(2.2rem, 5vw, 4.5rem);
+  letter-spacing: 0;
+  line-height: 0.98;
+  margin-bottom: 18px;
+}
+
+.pricing-visual p:not(.eyebrow) {
+  color: rgba(255,255,255,0.72);
+  line-height: 1.8;
+  margin-bottom: 26px;
+}
+
+@keyframes priceRise {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 920px) {
+  .pricing-packages,
+  .pricing-visual {
+    grid-template-columns: 1fr;
+  }
+  .pricing-visual img { min-height: 320px; }
+}

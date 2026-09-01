@@ -1,6 +1,13 @@
 import SEOHead from "../components/ui/SEOHead";
 import { BUSINESS, SERVICES, SITE_URL } from "../data/businessData";
+import { PRINT_IMAGES } from "../data/imageLibrary";
 import "./PricingPage.css";
+
+const PACKAGES = [
+  ["Starter Business Kit", "Visiting cards + letter pad + envelope print guidance", "For new shops and freelancers", PRINT_IMAGES.businessCards],
+  ["Retail Launch Kit", "Flyers + stickers + flex/banner material options", "For offers, launches and storefronts", PRINT_IMAGES.signage],
+  ["Event Print Kit", "Invitations + IDs + certificates + posters", "For colleges, families and organizers", PRINT_IMAGES.printStudio],
+];
 
 const pricingSchema = {
   "@context": "https://schema.org",
@@ -43,6 +50,19 @@ export default function PricingPage() {
 
       <section className="section">
         <div className="container">
+          <div className="pricing-packages">
+            {PACKAGES.map(([title, text, meta, image]) => (
+              <article key={title}>
+                <img src={image} alt={title} loading="lazy" />
+                <div>
+                  <span>{meta}</span>
+                  <h2>{title}</h2>
+                  <p>{text}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+
           <div className="pricing-grid">
             {SERVICES.map((s) => (
               <article key={s.id} className="pricing-card">
@@ -80,6 +100,28 @@ export default function PricingPage() {
               className="btn btn-primary"
             >
               Ask for Bulk Price
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="pricing-visual-cta">
+        <div className="container pricing-visual">
+          <img src={PRINT_IMAGES.paperStack} alt="Bulk print pricing samples" loading="lazy" />
+          <div>
+            <p className="eyebrow">Bulk & Custom Pricing</p>
+            <h2>Exact price depends on paper, finish, quantity and urgency.</h2>
+            <p>
+              For larger print runs, send details on WhatsApp. We can suggest
+              cost-effective options without making the final print look cheap.
+            </p>
+            <a
+              href={`https://wa.me/${BUSINESS.contact.whatsapp}?text=Hi ZeePrintz! I need help choosing the best print package.`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-whatsapp"
+            >
+              Get Package Quote
             </a>
           </div>
         </div>

@@ -74,7 +74,22 @@ export default function SEOHead({
         },
       })),
     },
-    sameAs: [BUSINESS.social.instagram, BUSINESS.social.facebook],
+    // NOTE: aggregateRating is added ONLY when you have real Google reviews.
+    // Do not hardcode a fake reviewCount — Google can penalize schema that
+    // doesn't match your actual Google Business Profile review count.
+    // Once you have real reviews, uncomment and fill in real numbers:
+    // aggregateRating: {
+    //   "@type": "AggregateRating",
+    //   ratingValue: "4.9",
+    //   reviewCount: "23",
+    // },
+
+    // sameAs only includes links that actually exist — filters out empty ones
+    sameAs: [
+      BUSINESS.social.instagram,
+      BUSINESS.social.facebook,
+      BUSINESS.googleBusinessLink,
+    ].filter(Boolean),
   };
 
   const schemas = [localBusinessSchema, ...schema];
@@ -94,6 +109,7 @@ export default function SEOHead({
       <meta property="og:url" content={pageUrl} />
       <meta property="og:image" content={`${SITE_URL}/logo512.png`} />
       <meta property="og:locale" content="en_IN" />
+      <meta property="og:site_name" content="ZeePrintz" />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />

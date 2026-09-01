@@ -16,7 +16,7 @@ export default function App() {
     <HelmetProvider>
       <BrowserRouter>
         <Navbar />
-        <main style={{ paddingTop: "var(--nav-h)" }}>
+        <main>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/services" element={<ServicesPage />} />

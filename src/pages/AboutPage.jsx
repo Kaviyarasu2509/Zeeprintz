@@ -1,6 +1,14 @@
 import SEOHead from "../components/ui/SEOHead";
 import { BUSINESS, SITE_URL } from "../data/businessData";
+import { PRINT_IMAGES } from "../data/imageLibrary";
 import "./AboutPage.css";
+
+const TIMELINE = [
+  ["2014", "Started serving local business print needs from Coimbatore."],
+  ["2018", "Expanded into signage, brochures, stickers and corporate orders."],
+  ["2022", "Built a faster WhatsApp-first quote and order workflow."],
+  ["2026", "Premium print studio experience for brands, shops and events."],
+];
 
 export default function AboutPage() {
   return (
@@ -92,6 +100,38 @@ export default function AboutPage() {
                 Chat on WhatsApp
               </a>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="about-studio-section">
+        <div className="container about-studio">
+          <img src={PRINT_IMAGES.printStudio} alt="ZeePrintz print studio" loading="lazy" />
+          <div>
+            <p className="eyebrow">Inside the Studio</p>
+            <h2>Every order moves through file check, material choice, print, finish and packing.</h2>
+            <p>
+              The goal is simple: make printing less confusing for local
+              businesses. You bring the idea, we help turn it into something
+              that is ready to hand out, display, gift or sell.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="section about-timeline-section">
+        <div className="container">
+          <div className="about-timeline-title">
+            <p className="eyebrow">Growth</p>
+            <h2>From a local print counter to a full print production partner.</h2>
+          </div>
+          <div className="about-timeline">
+            {TIMELINE.map(([year, text]) => (
+              <article key={year}>
+                <span>{year}</span>
+                <p>{text}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
