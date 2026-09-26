@@ -99,8 +99,12 @@ export default function ContactPage() {
                 style={{ border: 0, borderRadius: "var(--radius-md)" }}
                 allowFullScreen
                 loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
               />
             </div>
+            <a href={BUSINESS.googleReviewLink} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+              Share your experience on Google
+            </a>
           </div>
 
           <div className="contact-form-box">

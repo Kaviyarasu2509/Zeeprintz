@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { BUSINESS, SERVICE_AREAS, SERVICES } from "../../data/businessData";
 import "./Footer.css";
+import { servicePath } from "../../data/serviceDetails";
 
 export default function Footer() {
   return (
@@ -33,7 +34,7 @@ export default function Footer() {
           <ul className="footer__list">
             {SERVICES.slice(0, 6).map((service) => (
               <li key={service.id}>
-                <Link to="/services">{service.title}</Link>
+                <Link to={servicePath(service.id)}>{service.title}</Link>
               </li>
             ))}
           </ul>
@@ -48,6 +49,7 @@ export default function Footer() {
             <li><Link to="/gallery">Gallery</Link></li>
             <li><Link to="/about">About Us</Link></li>
             <li><Link to="/contact">Contact</Link></li>
+            <li><a href={BUSINESS.googleReviewLink} target="_blank" rel="noopener noreferrer">Review us on Google</a></li>
           </ul>
         </div>
 

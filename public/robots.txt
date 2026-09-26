@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://zeeprintz.com/sitemap.xml
+Sitemap: https://zeeprintz.in/sitemap.xml

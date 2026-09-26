@@ -1,0 +1,6 @@
+{
+  "redirects": [
+    { "source": "/:path*", "has": [{ "type": "host", "value": "www.zeeprintz.in" }], "destination": "https://zeeprintz.in/:path*", "permanent": true }
+  ],
+  "rewrites": [{ "source": "/((?!static/|.*\\.[^/]+$).*)", "destination": "/index.html" }]
+}

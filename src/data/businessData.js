@@ -18,7 +18,7 @@ export const BUSINESS = {
   contact: {
     phone: "7598951141",
     phoneDisplay: "+91 75989 51141",
-    email: "zeeprintzcoimbatore@gmail.com",
+    email: "zeeprintzcbe@gmail.com",
     whatsapp: "917598951141",
   },
   hours: {
@@ -33,10 +33,11 @@ export const BUSINESS = {
   // TODO: Once you create/verify your Google Business Profile, paste its
   // share link here (Google Business Profile > Ask for reviews > Copy link).
   // This is one of the strongest local-SEO signals you can add.
-  googleBusinessLink: "",
-  mapEmbed: "https://maps.google.com/maps?q=Gandhipuram,Coimbatore&output=embed",
+  googleBusinessLink: "https://www.google.com/maps?cid=12845380237362979713",
+  googleReviewLink: "https://g.page/r/CYHj16RE9UOyECE/review",
+  mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4818.8421636695975!2d76.96617287584016!3d11.018704954676481!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba8599fec413d25%3A0xb243f544a4d7e381!2szee%20printz!5e1!3m2!1sen!2sin!4v1790400127234!5m2!1sen!2sin",
   googleMapsLink:
-    "https://maps.google.com/?q=2nd+Floor+Balaji+Complex+288+2nd+St+Gandhipuram+Coimbatore",
+    "https://www.google.com/maps?cid=12845380237362979713",
   geo: {
     latitude: "11.0168",
     longitude: "76.9558",

@@ -1,4 +1,6 @@
 import SEOHead from "../components/ui/SEOHead";
+import { Link } from "react-router-dom";
+import { servicePath } from "../data/serviceDetails";
 import { BUSINESS, SERVICES, SITE_URL } from "../data/businessData";
 import { PRINT_IMAGES } from "../data/imageLibrary";
 import "./ServicesPage.css";
@@ -120,7 +122,7 @@ export default function ServicesPage() {
                 </div>
                 <h2>{s.title} in Coimbatore</h2>
                 <p>{s.desc}</p>
-                <p className="sfc__keyword">{s.keywords}</p>
+                {servicePath(s.id) !== "/services" && <Link to={servicePath(s.id)}>Explore {s.title.toLowerCase()} options</Link>}
                 <div className="sfc__footer">
                   <span className="sfc__price">{s.price}</span>
                   <a

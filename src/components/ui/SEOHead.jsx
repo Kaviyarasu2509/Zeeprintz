@@ -38,11 +38,7 @@ export default function SEOHead({
       postalCode: BUSINESS.address.pincode,
       addressCountry: "IN",
     },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: BUSINESS.geo.latitude,
-      longitude: BUSINESS.geo.longitude,
-    },
+    hasMap: BUSINESS.googleMapsLink,
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",

@@ -9,17 +9,22 @@ import GalleryPage from "./pages/GalleryPage";
 import PricingPage from "./pages/PricingPage";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
+import ServiceDetailPage from "./pages/ServiceDetailPage";
+import ScrollToTop from "./components/ui/ScrollToTop";
+import { SERVICE_DETAILS, servicePath } from "./data/serviceDetails";
 import "./styles/global.css";
 
 export default function App() {
   return (
     <HelmetProvider>
       <BrowserRouter>
+        <ScrollToTop />
         <Navbar />
         <main>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/services" element={<ServicesPage />} />
+            {SERVICE_DETAILS.map(service => <Route key={service.id} path={servicePath(service.id)} element={<ServiceDetailPage service={service} />} />)}
             <Route path="/gallery" element={<GalleryPage />} />
             <Route path="/pricing" element={<PricingPage />} />
             <Route path="/about" element={<AboutPage />} />

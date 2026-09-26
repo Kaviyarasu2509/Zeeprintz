@@ -1,0 +1,10 @@
+.service-detail-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px; }
+.service-detail-grid h2 { font-size: 1.6rem; margin-bottom: 18px; }
+.service-detail-grid p, .service-detail-grid ul, .service-detail-grid address { margin-bottom: 24px; line-height: 1.8; }
+.service-detail-grid ul { padding-left: 22px; }
+.service-detail-grid a { overflow-wrap: anywhere; }
+.service-detail-faq { background: #f3f6f7; }
+.service-detail-faq details { border-bottom: 1px solid #cdd7db; padding: 20px 0; }
+.service-detail-faq summary { cursor: pointer; font-weight: 600; }
+.service-detail-faq details p { margin-top: 14px; max-width: 75ch; }
+@media (max-width: 700px) { .service-detail-grid { grid-template-columns: 1fr; gap: 28px; } }
