@@ -156,16 +156,19 @@ function useCounters() {
 }
 
 function CinematicIntro() {
-  const [visible, setVisible] = useState(() => sessionStorage.getItem("zpCmykIntroSeen") !== "yes");
+  const [visible, setVisible] = useState(() => {
+    try { return sessionStorage.getItem("zpCmykIntroSeen") !== "yes"; }
+    catch { return false; }
+  });
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
     if (!visible) return undefined;
     const fallback = window.setTimeout(() => setReady(true), 80);
     const done = window.setTimeout(() => {
-      sessionStorage.setItem("zpCmykIntroSeen", "yes");
+      try { sessionStorage.setItem("zpCmykIntroSeen", "yes"); } catch { /* Storage may be disabled. */ }
       setVisible(false);
-    }, 3500);
+    }, 3000);
 
     return () => {
       window.clearTimeout(fallback);
@@ -190,7 +193,7 @@ function CinematicIntro() {
       <button
         className="cinema-intro__skip"
         onClick={() => {
-          sessionStorage.setItem("zpCmykIntroSeen", "yes");
+          try { sessionStorage.setItem("zpCmykIntroSeen", "yes"); } catch { /* Storage may be disabled. */ }
           setVisible(false);
         }}
       >
@@ -260,7 +263,9 @@ export default function HomePage() {
   useEffect(() => {
     if (!headlineRef.current) return undefined;
     const split = new SplitType(headlineRef.current, { types: "lines" });
-    const introDelay = sessionStorage.getItem("zpCmykIntroSeen") === "yes" ? 0.12 : 3.35;
+    let introDelay = 0.12;
+    try { introDelay = sessionStorage.getItem("zpCmykIntroSeen") === "yes" ? 0.12 : 3.05; }
+    catch { /* Render immediately when browser storage is unavailable. */ }
 
     gsap.fromTo(
       split.lines,

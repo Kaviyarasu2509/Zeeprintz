@@ -23,6 +23,13 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => setOpen(false), [location]);
+  useEffect(() => {
+    const close = event => { if (event.key === "Escape") setOpen(false); };
+    const resize = () => { if (window.innerWidth > 900) setOpen(false); };
+    window.addEventListener("keydown", close);
+    window.addEventListener("resize", resize);
+    return () => { window.removeEventListener("keydown", close); window.removeEventListener("resize", resize); };
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -83,7 +90,7 @@ export default function Navbar() {
         onClick={() => setOpen(false)}
       />
 
-      <aside className={`navbar__drawer ${open ? "open" : ""}`} aria-hidden={!open}>
+      <aside className={`navbar__drawer ${open ? "open" : ""}`} aria-hidden={!open} inert={!open}>
         <div className="drawer__head">
           <Link to="/" className="drawer__logo" aria-label="ZeePrintz home">
             <span className="logo-mark">ZP</span>
